@@ -35,11 +35,14 @@ export const getServerSideProps = async (ctx) => {
     admin = true;
   }
   await dbConnect();
-  const res = await axios.get("https://kallukoshai.vercel.app/api/products");
-  console.log(res);
+  //const res = await axios.get("https://kallukoshai.vercel.app/api/products");
+  let response = await fetch("https://kallukoshai.vercel.app/api/products");
+  // extract the data
+  let data = await response.json();
+  console.log(data);
   return {
     props: {
-      productList: res.data,
+      productList: data,
       admin,
     },
   };
