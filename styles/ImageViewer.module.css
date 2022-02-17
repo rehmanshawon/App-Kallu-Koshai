@@ -1,0 +1,174 @@
+.mainAddButton {
+  padding: 10px;
+  margin: 20px;
+  background-color: #d1411e;
+  width: 150px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.52);
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 95vw;
+  height: 85vh;
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex;
+  /* flex-direction: column; */
+
+  /* position: relative;
+  justify-content: center; */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+.imgContainer {
+  /* position: relative; */
+  display: flex;
+  flex: 0.8;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: zoom-out;
+}
+.imgContainerSmall {
+  position: relative;
+  display: flex;
+  flex: 0.8;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: zoom-out;
+}
+.zoomIn {
+  cursor: zoom-in;
+}
+.zoomOut {
+  cursor: zoom-out;
+}
+.infoContainer {
+  margin: 1rem;
+  flex: 0.15;
+  font-size: 0.9rem;
+}
+.infoTitle {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.infoDesc {
+  font-size: 1.1rem;
+}
+.thumbnailArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thumbnail {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  /* padding: 1rem; */
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.thumbnail:hover {
+  border: 2px solid rgba(250, 0, 0, 0.2);
+
+  box-shadow: 0 0 3px 1px rgb(173, 55, 0);
+}
+.close {
+  width: 30px;
+  height: 30px;
+  /* background-color: rgb(102, 102, 102); */
+  color: rgb(0, 0, 0);
+  border-radius: 20%;
+  top: 75px;
+  right: 50px;
+  display: flex;
+  flex: 0.05;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+.close:hover {
+  border: 2px solid rgba(251, 0, 0, 0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid gray;
+  outline: none;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputSm {
+  width: 25%;
+}
+
+.extra {
+  display: flex;
+  justify-content: space-between;
+}
+
+.extraItems {
+  margin: 10px 0px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.extraItem {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid tomato;
+  background-color: white;
+  color: tomato;
+  margin-right: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.addButton {
+  width: 25%;
+  border: none;
+  background-color: teal;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 5px 0;
+  align-self: flex-end;
+}
