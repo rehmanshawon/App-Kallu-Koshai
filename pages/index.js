@@ -35,7 +35,7 @@ export const getServerSideProps = async (ctx) => {
     admin = true;
   }
   await dbConnect();
-  const res = await axios.get("http://localhost:3000/api/products");
+  const res = await axios.get("https://kochenlay.vercel.app/api/products");
   console.log(res);
   return {
     props: {
