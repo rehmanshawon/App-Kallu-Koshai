@@ -37,6 +37,7 @@ export const getServerSideProps = async (ctx) => {
   await dbConnect();
   //const res = await axios.get("https://kallukoshai.vercel.app/api/products");
   let response = await fetch("https://kallukoshai.vercel.app/api/products");
+  //let response = await fetch("http://localhost:3000/api/products");
   // extract the data
   let data = await response.json();
   console.log(data);
