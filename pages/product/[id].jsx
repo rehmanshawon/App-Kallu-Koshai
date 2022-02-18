@@ -7,6 +7,7 @@ import Image from "next/image";
 
 import { useEffect } from "react";
 import ImageViewer from "../../components/ImageViewer";
+import dbConnect from "../../util/mongo";
 
 //export default useMousePosition;
 
@@ -290,6 +291,8 @@ export const getServerSideProps = async ({ params }) => {
   let dev = process.env.NODE_ENV !== "production";
   let DEV_URL = process.env.DEV_URL;
   let PROD_URL = process.env.PROD_URL;
+
+  await dbConnect();
   const res = await axios.get(
     `${dev ? DEV_URL : PROD_URL}/api/products/${params.id}`
   );
