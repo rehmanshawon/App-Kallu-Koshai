@@ -10,8 +10,14 @@ const Login = () => {
   const router = useRouter();
 
   const handleClick = async () => {
+    // get the current environment
+    let dev = process.env.NODE_ENV !== "production";
+    let DEV_URL = process.env.DEV_URL;
+    let PROD_URL = process.env.PROD_URL;
+    //let { DEV_URL, PROD_URL } = process.env;
+    //console.log(process.env);
     try {
-      await axios.post("http://localhost:3000/api/login", {
+      await axios.post(`${dev ? DEV_URL : PROD_URL}/api/login`, {
         username,
         password,
       });

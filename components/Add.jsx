@@ -45,8 +45,10 @@ const Add = ({ setClose }) => {
         offer,
         returnPolicy,
       };
-
-      await axios.post("http://localhost:3000/api/products", newProduct);
+      // get the current environment
+      let dev = process.env.NODE_ENV !== "production";
+      let { DEV_URL, PROD_URL } = process.env;
+      await axios.post(`${dev ? DEV_URL : PROD_URL}/api/products`, newProduct);
       setClose(true);
     } catch (err) {
       console.error(err.response.data);

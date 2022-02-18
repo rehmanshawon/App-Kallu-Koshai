@@ -30,13 +30,17 @@ export default function Home({ productList, admin }) {
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || "";
   let admin = false;
+  // get the current environment
+  let dev = process.env.NODE_ENV !== "production";
+  let DEV_URL = process.env.DEV_URL;
+  let PROD_URL = process.env.PROD_URL;
 
   if (myCookie.token === process.env.TOKEN) {
     admin = true;
   }
   await dbConnect();
   //const res = await axios.get("https://kallukoshai.vercel.app/api/products");
-  let response = await fetch("https://kallukoshai.vercel.app/api/products");
+  let response = await fetch(`${dev ? DEV_URL : PROD_URL}/api/products`);
   //let response = await fetch("http://localhost:3000/api/products");
   // extract the data
   let data = await response.json();

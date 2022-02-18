@@ -151,7 +151,13 @@ const Order = () => {
 };
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await axios.get(`http://localhost:3000/api/orders/${params.id}`);
+  // get the current environment
+  let dev = process.env.NODE_ENV !== "production";
+  let DEV_URL = process.env.DEV_URL;
+  let PROD_URL = process.env.PROD_URL;
+  const res = await axios.get(
+    `${dev ? DEV_URL : PROD_URL}/api/orders/${params.id}`
+  );
   return {
     props: { order: res.data },
   };

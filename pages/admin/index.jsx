@@ -9,10 +9,14 @@ const Index = ({ orders, products }) => {
   const status = ["preparing", "on the way", "delivered"];
 
   const handleDelete = async (id) => {
-    console.log(id);
+    // get the current environment
+    let dev = process.env.NODE_ENV !== "production";
+    let DEV_URL = process.env.DEV_URL;
+    let PROD_URL = process.env.PROD_URL;
+    //console.log(id);
     try {
       const res = await axios.delete(
-        "http://localhost:3000/api/products/" + id
+        `${dev ? DEV_URL : PROD_URL}/api/products/` + id
       );
       setPizzaList(pizzaList.filter((pizza) => pizza._id !== id));
     } catch (err) {
@@ -21,13 +25,20 @@ const Index = ({ orders, products }) => {
   };
 
   const handleStatus = async (id) => {
+    // get the current environment
+    let dev = process.env.NODE_ENV !== "production";
+    let DEV_URL = process.env.DEV_URL;
+    let PROD_URL = process.env.PROD_URL;
     const item = orderList.filter((order) => order._id === id)[0];
     const currentStatus = item.status;
 
     try {
-      const res = await axios.put("http://localhost:3000/api/orders/" + id, {
-        status: currentStatus + 1,
-      });
+      const res = await axios.put(
+        `${dev ? DEV_URL : PROD_URL}/api/orders/` + id,
+        {
+          status: currentStatus + 1,
+        }
+      );
       setOrderList([
         res.data,
         ...orderList.filter((order) => order._id !== id),
@@ -118,6 +129,10 @@ const Index = ({ orders, products }) => {
 };
 
 export const getServerSideProps = async (ctx) => {
+  // get the current environment
+  let dev = process.env.NODE_ENV !== "production";
+  let DEV_URL = process.env.DEV_URL;
+  let PROD_URL = process.env.PROD_URL;
   const myCookie = ctx.req?.cookies || "";
 
   if (myCookie.token !== process.env.TOKEN) {
@@ -129,8 +144,10 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
-  const productRes = await axios.get("http://localhost:3000/api/products");
-  const orderRes = await axios.get("http://localhost:3000/api/orders");
+  const productRes = await axios.get(
+    `${dev ? DEV_URL : PROD_URL}/api/products`
+  );
+  const orderRes = await axios.get(`${dev ? DEV_URL : PROD_URL}/api/orders`);
 
   return {
     props: {
