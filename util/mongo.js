@@ -38,7 +38,7 @@ async function dbConnect() {
         return mongoose;
       })
       .catch((err) => {
-        throw err;
+        throw new Error("could not cn");
       });
   }
   cached.conn = await cached.promise;
