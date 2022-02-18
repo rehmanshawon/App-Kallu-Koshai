@@ -16,11 +16,13 @@ if (!MONGO_URL) {
 let cached = global.mongoose;
 
 if (!cached) {
+  console.log("no catch");
   cached = global.mongoose = { conn: null, promise: null };
 }
 
 async function dbConnect() {
   if (cached.conn) {
+    console.log(cached.conn);
     return cached.conn;
   }
 
@@ -32,6 +34,7 @@ async function dbConnect() {
     cached.promise = mongoose
       .connect(MONGO_URL, opts)
       .then((mongoose) => {
+        console.log(mongoose);
         return mongoose;
       })
       .catch((err) => {
